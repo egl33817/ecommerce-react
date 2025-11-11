@@ -1,11 +1,23 @@
+import axios from "axios"
+import { API_URL } from "../../constants/env"
 import "./Login.css"
 
 const Login = () => {
 
     const hacerLogin = (evento) => {
-        // Evitamos envío del form con el método GET del navegador.
         evento.preventDefault()
-        alert("Formulario enviado")
+
+        const datosUsuario = {
+            email: evento.target.email.value,
+            password: evento.target.password.value
+        }
+
+        axios.post(`${API_URL}/public/login`, datosUsuario)
+            .then((respuesta) => {
+                console.log(respuesta.data)
+                localStorage.setItem("tokenEcommerce", respuesta.data.data.token)
+            })
+            .catch((error) => console.log(error))
     }
 
     return (
@@ -15,11 +27,11 @@ const Login = () => {
             <form onSubmit={hacerLogin}>
                 <div className="field">
                     <label htmlFor="email">Correo electrónico: </label>
-                    <input type="email" name="email" />
+                    <input type="email" name="email" required />
                 </div>
                 <div className="field">
                     <label htmlFor="password">Contraseña: </label>
-                    <input type="password" name="password" />
+                    <input type="password" name="password" required />
                 </div>
                 <div className="submit">
                     <input type="submit" value="Iniciar sesión" />
