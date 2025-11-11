@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
+import "./MainMenu.css"
 
 const MainMenu = () => {
 
     return (
-        <nav>
+        <nav className="main-menu">
             <ul>
                 <li><Link to="/">Inicio</Link></li>
                 <li><Link to="/productos">Productos</Link></li>

@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 import Home from "../components/paginas/Home"
 import Error404 from "../components/paginas/Error404"
 import Products from "../components/paginas/Products"
+import Login from "../components/paginas/Login"
 import TemplatePublic from "../components/templates/TemplatePublic"
 
 // Este router recibe un array con todas las rutas de mi aplicación.
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
                 element: <Products />
             }
         ]
+    },
+    {
+        path: "/login",
+        element: <Login />
     }
 ])
 
