@@ -1,5 +1,6 @@
 import axios from "axios"
 import { API_URL } from "../../constants/env"
+import { setToken } from "../../helpers/auth"
 import "./Login.css"
 
 const Login = () => {
@@ -15,7 +16,7 @@ const Login = () => {
         axios.post(`${API_URL}/public/login`, datosUsuario)
             .then((respuesta) => {
                 console.log(respuesta.data)
-                localStorage.setItem("tokenEcommerce", respuesta.data.data.token)
+                setToken(respuesta.data.data.token)
             })
             .catch((error) => console.log(error))
     }
